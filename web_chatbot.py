@@ -1,5 +1,10 @@
 import streamlit as st
-from langdetect import detect
+def detect_language(text):
+    # Simple language detection based on common Spanish words
+    spanish_words = ['hola', 'como', 'que', 'por', 'para', 'con', 'una', 'una', 'del', 'las', 'los', 'el', 'la']
+    text_lower = text.lower()
+    spanish_count = sum(1 for word in spanish_words if word in text_lower)
+    return 'es' if spanish_count > 0 else 'en'
 import datetime
 
 # Your knowledge base (same as before)
@@ -102,4 +107,5 @@ st.sidebar.markdown("""
 """)
 
 st.sidebar.markdown("---")
+
 st.sidebar.markdown("💡 **Tip:** Ask questions naturally in English or Spanish!")
